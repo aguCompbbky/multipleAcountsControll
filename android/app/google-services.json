@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066893117610",
+    "project_id": "multipleacounts-3f14d",
+    "storage_bucket": "multipleacounts-3f14d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066893117610:android:56ccd1d236d3802c1628d3",
+        "android_client_info": {
+          "package_name": "com.example.multiple_accounts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqmBQO3mtdvpzbOZrOzjwnzCY1xn3-JXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
