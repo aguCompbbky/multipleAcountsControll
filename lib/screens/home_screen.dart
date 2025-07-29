@@ -75,8 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     itemBuilder: (context, index) {
                                       return ListTile(
                                         title: Text(
-                                          accountServices
-                                              .subAccountsList![index],
+                                          accountServices.subAccountsList![index], //listelendikleri yer
                                         ),
                                         onTap: () {},
                                       );
@@ -116,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .text,
                                                         ),
                                                       );
-                                                     await authService.getSubUserList();
+                                                     
                                                   setState(() {});
                                                   Navigator.pop(context);
                                                   Navigator.pop(context);

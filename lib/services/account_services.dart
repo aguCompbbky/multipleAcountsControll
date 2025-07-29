@@ -12,11 +12,14 @@ class AccountServices {
     print("inite girdi");
 
     final user = authService.currentUser;
+    
     if (user == null) {
+      
       print("Giriş yapan kullanıcı yok. subAccountsList yüklenemedi.");
       subAccountsList = [];
       return;
     }
+    print(user.email);
     subAccountsList = await authService.getSubUserList();
 
     if (subAccountsList!=null) {
@@ -33,15 +36,21 @@ class AccountServices {
     }
   }
 
-  // login işlemi yaptır eğer başarılı olursa uidyi subAccountListe EKLE
+  Future<List<String>> updateList()async{
+    List<String> userList =  await authService.getSubUserList();
+    return userList;
+  }
+
+ 
   Future<void> addNewAccount(String email, String password) async {
     try {
-      final subUid = await tempAccount(email, password);
+      final subUid = await tempAccount(email, password);//uidyi çek çekiyor şu anda bunda sıkıntı yok
       if (subUid != null) {
         subAccountsList!.add(subUid);
-        await authService.getSubUserList();
+        
+        //bu null geliyor
 
-        User? user = FirebaseAuth.instance.currentUser;
+        User? user = FirebaseAuth.instance.currentUser;//bu null geldi
         if (user == null) {
           print("HATA: Giriş yapan kullanıcı yok!");
           return;
@@ -50,6 +59,8 @@ class AccountServices {
         await authService.db.doc(user.uid).update({
           'subAccounts': subAccountsList,
         });
+
+        subAccountsList = await updateList();
       } else {
         throw Exception("subUid boş geldi");
       }

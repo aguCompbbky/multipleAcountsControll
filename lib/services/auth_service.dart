@@ -77,15 +77,20 @@ Future<String?> getEmail() async {
 }
 
 Future<List<String>> getSubUserList() async {
+  try {
   final userInfo = await db.doc(currentUser!.uid).get();
   if (userInfo.exists) {
-    final data = userInfo.data();
+    final data = userInfo.data();//girdi
     final dynamicList = data?['subAccounts'];
     
     if (dynamicList is List) {
       return List<String>.from(dynamicList);
     }
   }
+  throw Exception("user bos");
+} on Exception catch (e) {
+  print(e.toString());
   return [];
+}
 }
 }
